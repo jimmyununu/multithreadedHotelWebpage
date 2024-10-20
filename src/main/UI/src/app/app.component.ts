@@ -30,8 +30,10 @@ export class AppComponent implements OnInit{
 
   // declares my empty array where ill store my welcome message
   messageArray: string[] = [];
+  //declare to hold my live presentation times
+  presentationTimes: any = {};
 
-    ngOnInit(){
+  ngOnInit(){
       this.roomsearch= new FormGroup({
         checkin: new FormControl(' '),
         checkout: new FormControl(' ')
@@ -48,8 +50,21 @@ export class AppComponent implements OnInit{
       this.currentCheckOutVal = x.checkout;
     });
 
-    //method created below
+
     this.getWelcomeMessages();
+    this.getPresentationTimes()
+
+  }
+
+  getPresentationTimes() {
+    this.httpClient.get('http://localhost:8080/api/live-presentation-times')
+      .subscribe(data => {
+        this.presentationTimes = data;
+        // error logging
+        console.log("Presentation Times:", this.presentationTimes);
+      }, error => {
+        console.error("Failed to fetch presentation times", error);
+      });
   }
 
   getWelcomeMessages() {
@@ -57,7 +72,7 @@ export class AppComponent implements OnInit{
       .subscribe(data => {
         this.messageArray = data;
       }, error => {
-        console.error("Failed to fetch messages", error);  //helps me with inspect element to get them to display on both 4200 and 8200
+        console.error("Failed to fetch messages", error);  //helped me with inspect element to get them to display on both 4200 and 8200
       });
   }
 
