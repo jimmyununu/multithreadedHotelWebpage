@@ -21,6 +21,15 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+/* Styling for my welcome message */
+.welcome {
+  color: white;
+  font-size: 48px;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 /* line 22, ../../../../../.rvm/gems/ruby-2.1.2/gems/compass-core-1.0.0.rc.1/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
@@ -80,7 +89,7 @@ body {
 }
 
 /* line 7, ../../../components/sass/_base.scss */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, {
   font: 200 1.5em/1.5em "Exo 2", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #0e83a0;
   font-weight: 600;

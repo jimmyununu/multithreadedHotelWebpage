@@ -3,6 +3,15 @@
 <header id="intro" style="display: block;">
   <article class="fullheight" style="height: 568px;">
     <div class="hgroup">
+
+      <!-- Welcome Message -->
+      <div *ngIf="messageArray.length > 0">
+        <ul>
+          <li class = welcome *ngFor="let message of messageArray">{{ message }}</li>
+        </ul>
+      </div>
+      <!-- Welcome Message -->
+
       <h1>Landon Hotel</h1>
       <h2>London, Ontario</h2>
       <p><a href="/#welcome"><img src="assets/images/arrow.png" alt="down arrow"></a></p>
@@ -23,7 +32,7 @@
   <div class="scene" id="welcome">
     <article class="content">
 
- 
+
 
       <div class="row">
         <div class=""col-12>
@@ -58,7 +67,7 @@
               </div>
               </form>
 
-        
+
         </div>
       </div>
 
@@ -87,7 +96,7 @@
         </div>
       </div>
     </article>
-  </div><!-- welcome -->
+  </div>
   <div class="scene" id="hotelinfo">
     <article class="heading">
       <h1>Essential Info</h1>

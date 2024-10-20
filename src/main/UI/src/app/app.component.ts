@@ -28,6 +28,9 @@ export class AppComponent implements OnInit{
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
 
+  // declares my empty array where ill store my welcome message
+  messageArray: string[] = [];
+
     ngOnInit(){
       this.roomsearch= new FormGroup({
         checkin: new FormControl(' '),
@@ -44,7 +47,20 @@ export class AppComponent implements OnInit{
       this.currentCheckInVal = x.checkin;
       this.currentCheckOutVal = x.checkout;
     });
+
+    //method created below
+    this.getWelcomeMessages();
   }
+
+  getWelcomeMessages() {
+    this.httpClient.get<string[]>('http://localhost:8080/api/welcome-messages')
+      .subscribe(data => {
+        this.messageArray = data;
+      }, error => {
+        console.error("Failed to fetch messages", error);  //helps me with inspect element to get them to display on both 4200 and 8200
+      });
+  }
+
 
     onSubmit({value,valid}:{value:Roomsearch,valid:boolean}){
       this.getAll().subscribe(
